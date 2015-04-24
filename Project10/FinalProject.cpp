@@ -18,8 +18,9 @@ void displayMenu()
     cout << "======Main Menu=====" << endl;
     cout << "1. Tree Functions" << endl;
     cout << "2. Tree Information" << endl;
-    cout << "3. Print the Tree" << endl;
-    cout << "4. Quit" << endl;
+    cout << "3. Tree Operations" << endl;
+    cout << "4. Print the Tree" << endl;
+    cout << "5. Quit" << endl;
 }
 
 int main(int argc, const char* argv[]) {
@@ -36,7 +37,7 @@ int main(int argc, const char* argv[]) {
     tree.insert(11);
     tree.insert(12);
     
-    while (mainChoice != 4)
+    while (mainChoice != 5)
     {
         displayMenu();
         
@@ -51,8 +52,8 @@ int main(int argc, const char* argv[]) {
                 while (secondChoice != 4)
                 {
                     cout << "=====Tree Functions=====" << endl;
-                    cout << "1. Lookup a value" << endl;
-                    cout << "2. Insert a value" << endl;
+                    cout << "1. Insert a value" << endl;
+                    cout << "2. Lookup a value" << endl;
                     cout << "3. Delete a value" << endl;
                     cout << "4. Main Menu" << endl;
                     
@@ -84,14 +85,14 @@ int main(int argc, const char* argv[]) {
                             tree.deleteNode(stoi(inputLine));
                             break;
                         case 4:
-                            secondChoice = 0;
+                            secondChoice = 4;
                             break;
                     }
-                break;
                 }
-            
+                secondChoice = 0;
+                break;
             case 2:
-             while (secondChoice != 11)
+             while (secondChoice != 6)
              {
                  cout << "=====Tree Information=====" << endl;
                  cout << "1. Tree Size" << endl;
@@ -101,62 +102,37 @@ int main(int argc, const char* argv[]) {
                  cout << "5. Valid Tree" << endl;
                  cout << "6. Main Menu" << endl;
                  
+                 getline(cin, inputLine);
+                 secondChoice = stoi(inputLine);
+                 
                  switch (secondChoice)
                  {
                      case 1:
-                         cout << "Tree size:" << tree.size() << endl;
+                         cout << "Tree size: " << tree.size() << endl;
                          break;
                      case 2:
-                         cout << "Max depth:" << tree.maxDepth() << endl;
+                         cout << "Max depth: " << tree.maxDepth() << endl;
                          break;
                      case 3:
-                         tree.minValue();
+                         cout << "Min value: " << tree.minValue() << endl;
                          break;
                      case 4:
-                         tree.maxValue();
+                         cout << "Max value: " << tree.maxValue() << endl;
                          break;
                      case 5:
-                         tree.isBST();
+                         if (tree.isBST())
+                             cout << "The tree is valid" << endl;
+                         else
+                             cout << "The tree is not valid." << endl;
                          break;
                      case 6:
-                         secondChoice = 0;
+                         secondChoice = 6;
                          break;
                  }
              }
-            
+                secondChoice = 0;
                 break;
-                
             case 3:
-                while (secondChoice != 5)
-                {
-                    cout << "=====Print the Tree=====" << endl;
-                    cout << "1. Postorder Traversal" << endl;
-                    cout << "2. Preorder Traversal" << endl;
-                    cout << "3. In Order Traversal" << endl;
-                    cout << "4. Pretty Print" << endl;
-                    cout << "5. Main Menu" << endl;
-                    
-                    switch (secondChoice)
-                    {
-                        case 1:
-                            tree.printPostOrder();
-                            break;
-                        case 2:
-                            tree.printPreOrder();
-                            break;
-                        case 3:
-                            tree.printInOrder();
-                            break;
-                        case 4:
-                            tree.prettyPrint();
-                            break;
-                        case 5:
-                            secondChoice = 0;
-                            break;
-                    }
-                }
-                break;
-            case 4:
             {
                 while (secondChoice != 5)
                 {
@@ -166,6 +142,9 @@ int main(int argc, const char* argv[]) {
                     cout << "3. Count Trees" << endl;
                     cout << "4. Find Path Sum" << endl;
                     cout << "5. Main Menu" << endl;
+                    
+                    getline(cin, inputLine);
+                    secondChoice = stoi(inputLine);
                     
                     switch (secondChoice)
                     {
@@ -193,11 +172,48 @@ int main(int argc, const char* argv[]) {
                                 cout << "The answer is no." << endl;
                             break;
                         case 5:
-                            secondChoice = 0;
+                            secondChoice = 5;
                             break;
                     }
                 }
             }
+                secondChoice = 0;
+                break;
+                
+            case 4:
+                while (secondChoice != 5)
+                {
+                    cout << "=====Print the Tree=====" << endl;
+                    cout << "1. Postorder Traversal" << endl;
+                    cout << "2. Preorder Traversal" << endl;
+                    cout << "3. In Order Traversal" << endl;
+                    cout << "4. Pretty Print" << endl;
+                    cout << "5. Main Menu" << endl;
+                    
+                    getline(cin, inputLine);
+                    secondChoice = stoi(inputLine);
+                    
+                    switch (secondChoice)
+                    {
+                        case 1:
+                            tree.printPostOrder();
+                            break;
+                        case 2:
+                            tree.printPreOrder();
+                            break;
+                        case 3:
+                            tree.printInOrder();
+                            break;
+                        case 4:
+                            tree.prettyPrint();
+                            break;
+                        case 5:
+                            secondChoice = 5;
+                            break;
+                    }
+                }
+                secondChoice = 0;
+                break;
             case 5:
                 cout << "Goodbye!" << endl;
                 break;
