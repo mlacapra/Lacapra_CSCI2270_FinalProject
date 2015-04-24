@@ -6,20 +6,23 @@
 //
 
 #include "BinaryTree.h"
+#include "PrettyPrint.h"
 #include <iostream>
 #include <iomanip>
 
 using namespace std;
 
+//Constructor
 BinaryTree::BinaryTree()
 {
     root = NULL;
 }
 
+//Destructor
 BinaryTree::~BinaryTree()
 {
     if (root != NULL)
-        deleteNode(root);
+        deleteAll(root);
 }
 
 /*
@@ -158,6 +161,22 @@ void BinaryTree::deleteNode(TreeNode* node)
         // Delete the node
         delete replacementNode;
     }
+}
+
+void BinaryTree::deleteAll()
+{
+   if (root != NULL)
+       deleteAll(root);
+    root = NULL;
+}
+
+void BinaryTree::deleteAll(TreeNode* node)
+{
+    if (node->left)
+        deleteAll(node->left);
+    if (node->right)
+        deleteAll(node->right);
+    delete node;
 }
 
 /*
@@ -312,6 +331,11 @@ void BinaryTree::printInOrder(TreeNode* node)
     printInOrder(node->right);
 }
 
+void BinaryTree::prettyPrint()
+{
+    printPretty(root, maxDepth(), 1, 0);
+}
+
 /*
  Write a C++ function to check if a tree has a root-to-leaf path such that adding up all the values along the path equals the given sum. The function takes two arguments, tree node and the sum being searched for. Return true if such path can be found. Otherwise, return false.
 */
@@ -385,76 +409,6 @@ void BinaryTree::doubleTree(TreeNode* node)
     node->left = newNode;
     
     node->left->left = oldLeft;
-}
-
-
-/*
- A function that returns True if two trees are structurally identical.(they are made of nodes with the same values arranged in the same way.) The function takes two arguments: treenode of tree1 and treenode of tree2. It should return True if the trees are identical. Otherwise, return False.
-*/
-
-bool BinaryTree::sameTree(BinaryTree* otherTree)
-{
-    return sameTree(root, otherTree->getRoot());
-}
-
-bool BinaryTree::sameTree(TreeNode* a, TreeNode* b)
-{
-    
-    // 1. both empty -> true
-    if (a == NULL && b == NULL)
-        return true;
-    
-    // 2. both non-empty -> compare them
-    if (a != NULL && b != NULL)
-    {
-        return
-        (
-         a->key == b->key &&
-         
-         sameTree(a->left, b->left) &&
-         
-         sameTree(a->right, b->right)
-         
-         );
-    }
-    
-    // 3. one empty, one not -> false
-    return false;
-}
-
-/*
- For the key values 1...numKeys, how many structurally unique
- binary search trees are possible that store those keys.
- Strategy: consider that each value could be the root.
- Recursively find the size of the left and right subtrees.
-*/
-
-int BinaryTree::countTrees(int numKeys)
-{
-    return countTrees(root, numKeys);
-}
-
-int BinaryTree::countTrees(TreeNode* node, int numKeys)
-{
-    
-    if (numKeys <= 1)
-        return(1);
-    
-    // there will be one value at the root, with whatever remains
-    // on the left and right each forming their own subtrees.
-    // Iterate through all the values that could be the root...
-    int sum = 0;
-    int left, right, root;
-    
-    for (root = 1; root <= numKeys; root++)
-    {
-        left = countTrees(root - 1);
-        right = countTrees(numKeys - root);
-    
-        // number of possible trees with this root == left*right
-        sum += left*right;
-    }
-    return(sum);
 }
 
 bool BinaryTree::isBST()
