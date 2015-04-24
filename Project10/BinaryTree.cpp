@@ -257,7 +257,7 @@ int BinaryTree::maxValue(TreeNode* node)
 
 void BinaryTree::printPostOrder()
 {
-    cout << "Print PostOrder: ";
+    cout << "Print Post Order: ";
     printPostOrder(root);
     cout << endl;
 }
@@ -310,7 +310,6 @@ void BinaryTree::printInOrder(TreeNode* node)
     printInOrder(node->left);
     cout << node->key << " ";
     printInOrder(node->right);
-    cout << node->key << " ";
 }
 
 /*
