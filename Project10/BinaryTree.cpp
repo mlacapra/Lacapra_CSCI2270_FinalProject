@@ -27,20 +27,20 @@ BinaryTree::~BinaryTree()
 
 /*
  Function Prototype:
- TreeNode* BinaryTree::lookup(struct node, int)
+ TreeNode* BinaryTree::lookup(int)
  
  Function Description: 
- This function takes a node and the value to search for as parameters and recurs down the tree, choosing the left or right branch by comparing the target value to each node passed in the traversal. Returns the node if found and NULL if not found.
+ This function takes a value to search for as a parameter and calls the recursive lookup function below, starting from the root of the tree. It recurs down the tree, choosing the left or right branch by comparing the target value to the node passed in the traversal. Returns node if found and NULL if not found.
  
  Example: 
  BinaryTree tree;
- tree.lookup(root, 8);
+ tree.lookup(8);
  
  Precondition: 
- The root is not empty and the value passed in the function is the value being searched for in the tree.
+ The parameter is an integer value
  
  Post condition:
- Recurs down the subtrees in search of the value. If found, the function returns the node.
+ The tree is unchanged. The return value is NULL if the value is not found, otherwise returns the pointer to the node with the given value.
  */
 
 TreeNode* BinaryTree::lookup(int value)
@@ -70,20 +70,20 @@ TreeNode* BinaryTree::lookup(TreeNode* node, int value)
 
 /*
  Function Prototype:
- TreeNoe* BinaryTree::insert(struct node, int);
+ TreeNode* BinaryTree::insert(int)
  
  Function Description:
- This method inserts a given value into the tree. If the tree is empty, the function creates a new node and adds it to the tree. Otherwise, the function recurs down each subtree in search of where to add the new value. Returns the unchanged node once inserted as a way to avoid using reference parameters.
+ This method takes the value to insert as a parameter and calls the recursive insert function to add the value to the tree. If the tree is empty, the function creates a new node and adds it to the tree as the root. Otherwise, the function recurs down each subtree in search of where to add the new value. Returns a pointer to the new node.
  
  Example: 
  BinaryTree tree;
- tree.insert(root, 8);
+ tree.insert(8);
  
  Precondition: 
- If the tree is empty, the node becomes the root. Otherwise it is added into the tree.
+ The parameter is an integer value.
  
  Post Condition: 
- The tree contains the new node added appropriately and its pointers are updated to reflect the new addition
+ The new node is inserted into the tree. Returns a pointer to the new node.
  */
 
 void BinaryTree::insert(int data)
@@ -115,20 +115,20 @@ TreeNode* BinaryTree::insert(TreeNode* node, int data)
 
 /*
  Function Prototype:
- void BinaryTree::deleteNode(struct node);
+ void BinaryTree::deleteNode(int);
  
  Function Description:
- This function handles three case: the node has no childre, the node has one child (left or right), or the node has two children.
+ This function calls the lookup function to ensure the value being deleted is in the tree. It returns NULL if not found, otherwise it calls the deleteNode function which evaluates three cases: the node to be deleted has one child (left or right), no children, or two children. The function adjusts the parent and children pointers to re-adjust the tree.
  
  Example:
  BinaryTree tree;
  tree.deleteNode(8);
  
  Precondition: 
- The node to be deleted is in the tree
+ The parameter is an integer
  
  Post Condition: 
- The node is deleted and the pointers are adjusted to reflect the new tree
+ The node is deleted and the pointers are adjusted to reflect the new tree. Returns NULL if the node is not found.
  */
 
 void BinaryTree::deleteNode(int value)
@@ -203,20 +203,20 @@ void BinaryTree::deleteNode(TreeNode* node)
 
 /*
  Function Prototype:
- void BinaryTree::deleteAll(struct node);
+ void BinaryTree::deleteAll();
  
  Function Description:
- This function recurs down each subtree and deletes each node
+ This function 
  
  Example:
  BinaryTree tree;
- tree.deleteAll(root);
+ tree.deleteAll();
  
  Precondition: 
- There is at least one node in the tree
+ None
  
  Post Condition: 
- The nodes are deleted and the tree is empty. The root is set to NULL
+ The nodes are deleted and the tree is empty. The root is set to NULL in either case.
  */
 
 void BinaryTree::deleteAll()
@@ -237,17 +237,17 @@ void BinaryTree::deleteAll(TreeNode* node)
 
 /*
  Function Prototype:
- int BinaryTree::size(struct node);
+ int BinaryTree::size();
  
  Function Description:
- This function computes the number of nodes in the tree. Returns the number of nodes in the tree if successful, and 0 if the tree is empty.
+ This function returns the call to the size function and recurs down the tree to compute the size. The function returns NULL if the tree is empty, otherwise it returns the integer size.
  
  Example:
  BinaryTree tree;
- tree.size(root);
+ tree.size();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
  Function recursively calls itself and sums the root to the number of nodes found in each subtree
@@ -268,20 +268,20 @@ int BinaryTree::size(TreeNode* node)
 
 /*
  Function Prototype:
- int BinaryTree::maxDepth(struct node);
+ int BinaryTree::maxDepth();
  
  Function Description:
- This function computes the number of nodes along the longest path from the root node to the farthest leaf node and returns an integer value which is the maximum height of the tree
+ This function returns the call to the recursive maxDepth function starting from the root of the tree. Returns the integer value for the maximum depth once it compares the length of the subtrees, otherwise it returns NULL if the tree is empty.
  
  Example:
  BinaryTree tree;
- tree.maxDepth(root);
+ tree.maxDepth();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
- The heights of each subtree are computed and the function returns the larger one of the two, adding 1 to represent the root
+ The tree is unchanged. Returns the maximum height of the tree once found. Otherwise, returns NULL if the tree is empty.
  
  */
 
@@ -309,20 +309,20 @@ int BinaryTree::maxDepth(TreeNode* node)
 
 /*
  Function Prototype:
- int BinaryTree::minValue(struct node);
+ int BinaryTree::minValue();
  
  Function Description:
- This function recurs down the left subtree in search of the smallest value. When found, it returns the value
+ This function returns the call to the minimum value function that starts from the root and recurs down the left subtree in search of the leftmost leaf. Returns the smallest value when found. If the tree is empty, the function returns 0.
  
  Example:
  BinaryTree tree;
- tree.minValue(root);
+ tree.minValue();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
- The smallest value found is returned
+ The smallest value found is returned, otherwise the function returns 0.
  */
 
 int BinaryTree::minValue()
@@ -334,7 +334,8 @@ int BinaryTree::minValue(TreeNode* node)
 
 {
     TreeNode* current = node;
-    // loop down to find the leftmost leaf
+    if (current == NULL)
+        return 0;
     
     while (current->left != NULL)
     {
@@ -346,20 +347,20 @@ int BinaryTree::minValue(TreeNode* node)
 
 /*
  Function Prototype:
- int BinaryTree::maxValue(struct node);
+ int BinaryTree::maxValue();
  
  Function Description:
- This function recurs down the right subtrees starting from the root in search of the largest value. When found, the function returns that value
+ This function returns the call to the maxValue function starting from the root of the tree and recurring down the right subtree in search of the rightmost leaf. Returns 0 if the node is NULL, otherwise returns the value of the rightmost leaf.
  
  Example:
  BinaryTree tree;
- tree.maxValue(root);
+ tree.maxValue();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
- The largest value found is returned
+ The largest value found is returned. Otherwise, the function returns 0 if the tree is empty.
  */
 
 int BinaryTree::maxValue()
@@ -371,11 +372,12 @@ int BinaryTree::maxValue(TreeNode* node)
 {
     
     TreeNode* current = node;
+    if (current == NULL)
+        return 0;
     
     // loop down to find the rightmost leaf
     
     while (current->right != NULL)
-        
     {
         current = current->right;
     }
@@ -385,20 +387,20 @@ int BinaryTree::maxValue(TreeNode* node)
 
 /*
  Function Prototype:
- void BinaryTree::printPostOrder(struct node);
+ void BinaryTree::printPostOrder();
  
  Function Description:
- This function prints the tree nodes in a bottom-up postorder traversal
+ This function prints the statement and then calls the recursive function printPostOrder to recur down each of the subtrees and print them bottoms up. If the tree is empty, the function returns. Otherwise, it prints the bottoms up traversal with a space between the values.
  
  Example:
  BinaryTree tree;
- tree.printPostOrder(root);
+ tree.printPostOrder();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
- The function recurs down both subtrees and then prints the nodes with a space between them
+ The keys are printed with a space between them if the tree is not empty. Otherwise it returns.
  */
 
 void BinaryTree::printPostOrder()
@@ -423,20 +425,20 @@ void BinaryTree::printPostOrder(TreeNode* node)
 
 /*
  Function Prototype:
- void BinaryTree::printPreOrder(struct node);
+ void BinaryTree::printPreOrder();
  
  Function Description:
- This function recurs down both subtrees and prints the nodes from the top down
+ This function prints the cout statement and then calls the recursive printPreOrder function starting from the root and recurring down each subtree, printing them first from the left and then from the right. Returns if the tree is empty.
  
  Example:
  BinaryTree tree;
- tree.printPreOrder(root);
+ tree.printPreOrder();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
- The nodes are printed from the top down with a space between them
+ The nodes are printed from the top down with a space between them. Otherwise the function returns.
  */
 
 void BinaryTree::printPreOrder()
@@ -459,20 +461,20 @@ void BinaryTree::printPreOrder(TreeNode* node)
 
 /*
  Function Prototype:
- void BinaryTree::printInOrder(struct node);
+ void BinaryTree::printInOrder();
  
  Function Description:
- This function prints the nodes in order starting from the left and then going on the right
+ This function prints the cout statement and then calls the printInOrder function starting from the root and recurring down the left subtree and then the right to print the values in the tree in order. Returns if the tree is empty.
  
  Example:
  BinaryTree tree;
- tree.printInOrder(root);
+ tree.printInOrder();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
- The nodes are printed in numerical order starting with the left and then recurring down the right
+ The values are printed in order. Otherwise the function returns if there are no nodes in the tree.
  */
 
 void BinaryTree::printInOrder()
@@ -493,6 +495,19 @@ void BinaryTree::printInOrder(TreeNode* node)
     printInOrder(node->right);
 }
 
+/*
+ Function Prototype:
+ void BinaryTree::prettyPrint();
+ 
+ Function Description:
+ This function calls the printPretty function starting from the root and going to the maximum depth of the tree, leaving 1 level between them and making 0 spaces between the values.
+ 
+ Precondition:
+ 
+ Post Condition:
+ The tree is printed according to the specified spaces and height.
+ */
+
 void BinaryTree::prettyPrint()
 {
     printPretty(root, maxDepth(), 1, 0);
@@ -510,7 +525,7 @@ void BinaryTree::prettyPrint()
  tree.hasPathSum(76);
  
  Precondition:
- There are nodes in the tree
+ The parameter is an integer
  
  Post Condition:
  If the sum is equal to the value being searched for, the function returns true. Otherwise it returns false
@@ -534,20 +549,20 @@ bool BinaryTree::hasPathSum(TreeNode* node, int sum)
 
 /*
  Function Prototype:
- void BinaryTree::mirror(struct node);
+ void BinaryTree::mirror();
  
  Function Description:
- This function mirrors the tree
+ The function returns the call to the recursive mirror function. Starting from the root, the function recurs down each subtree and then adjusts the pointers to mirror the tree. If the tree is empty, the function returns.
  
  Example:
  BinaryTree tree;
- tree.mirror(root);
+ tree.mirror();
  
  Precondition:
- There are nodes in the tree
+ None
  
  Post Condition:
- The function recurs down each subtree and then swaps the pointers accordingly to mirror the tree
+ The function mirrors the tree. Returns if the tree is empty.
  */
 
 void BinaryTree::mirror()
@@ -577,17 +592,17 @@ void BinaryTree::mirror(TreeNode* node)
  void BinaryTree::doubleTree(struct node);
  
  Function Description:
- For each node in the tree, the function creates a duplicate node and inserts it as the left child of the original node
+ The function returns the recursive doubleTree function which recurs down each subtree, duplicates each node, and adds it as the left child of the original node. The pointers are adjusted to double the tree. Returns if the tree is empty.
  
  Example:
  BinaryTree tree;
- tree.doubleTree(root);
+ tree.doubleTree();
  
  Precondition:
- The tree is not empty
+ None
  
  Post Condition:
- The node is duplicated and the pointers are adjusted to make the new node the left child of the original
+ The tree is doubled. Returns if the tree is empty.
  */
 
 void BinaryTree::doubleTree()
@@ -619,20 +634,20 @@ void BinaryTree::doubleTree(TreeNode* node)
 
 /*
  Function Prototype:
- bool BinaryTree::isBST(struct node);
+ bool BinaryTree::isBST();
  
  Function Description:
- This function takes the root as a parameter and checks to see if the tree is a balanced Binary Search Tree
+ This function returns the call to the isBST function starting from the root of the tree and checking each node to ensure that the max of the left is less than the parent node and that the max of the right is greater than the parent node. If both cases are true, the function returns true. Otherwise it returns false. If the tree is empty, the function also returns true.
  
  Example:
  BinaryTree tree;
- tree.isBST(root);
+ tree.isBST();
  
  Precondition:
- The tree is not empty
+ None
  
  Post Condition:
- All of the leftChildren are less than the parent and the rightChildren are greater than the parent
+ The tree is unchanged and the function returns true if the tree is valid. Otherwise, it returns false.
  */
 
 bool BinaryTree::isBST()
