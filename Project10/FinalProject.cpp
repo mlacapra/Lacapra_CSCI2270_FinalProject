@@ -10,7 +10,7 @@
 
 using namespace std;
 
-
+//Main menu
 void mainMenu()
 {   cout << endl << "======Main Menu=====" << endl;
     cout << "1. Tree Functions" << endl;
@@ -22,6 +22,7 @@ void mainMenu()
     cout << "7. Quit" << endl;
 }
 
+//Functions menu with a switch for each case in the menu
 void functionsMenu(BinaryTree& tree)
 {
     string inputLine;
@@ -68,6 +69,7 @@ void functionsMenu(BinaryTree& tree)
     }
 }
 
+//Information about the tree with a switch that covers each case in the menu
 void informationMenu(BinaryTree& tree)
 {
     string inputLine;
@@ -113,6 +115,7 @@ void informationMenu(BinaryTree& tree)
     }
 }
 
+//Operations for the tree with a switch for each case in the menu
 void operationsMenu(BinaryTree& tree)
 {
     string inputLine;
@@ -155,6 +158,7 @@ void operationsMenu(BinaryTree& tree)
     }
 }
 
+//Allows the user to pick the preferred method of displaying the contents of the tree
 void printingMenu(BinaryTree& tree)
 {
     string inputLine;
@@ -192,6 +196,7 @@ void printingMenu(BinaryTree& tree)
     }
 }
 
+//Loads the tree and inserts values with the iteration operator
 void loadFileData(BinaryTree& tree, const char* filename)
 {
     string line;
@@ -216,17 +221,17 @@ void loadFileData(BinaryTree& tree, const char* filename)
 int main(int argc, const char* argv[]) {
     int mainChoice = 0;
     
-    BinaryTree tree;
+    BinaryTree tree; // creates the tree
     
-    if (argc != 2)
+    if (argc != 2) // checks for the correct number of arguments
     {
         cout << "Invalid number of arguments." << endl;
         return 1;
     }
     
-    loadFileData(tree, argv[1]);
+    loadFileData(tree, argv[1]); // loads the tree with the information from the file
     
-    while (mainChoice != 7)
+    while (mainChoice != 7) // contains calls to each separate menu
     {
         mainMenu();
         
