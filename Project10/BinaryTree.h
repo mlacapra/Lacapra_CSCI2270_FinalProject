@@ -1,10 +1,8 @@
-//
 //  BinaryTree.h
 //  Project10
 //
 //  Created by Margherita Lacapra on 4/21/15.
 //  Copyright (c) 2015 Margherita Lacapra. All rights reserved.
-//
 
 #ifndef __Project10__BinaryTree__
 #define __Project10__BinaryTree__
@@ -35,6 +33,7 @@ class BinaryTree
     TreeNode* lookup(int value);
     void insert(int data);
     void deleteNode(int value);
+    void deleteAll();
     int size();
     int maxDepth();
     int minValue();
@@ -45,8 +44,6 @@ class BinaryTree
     bool hasPathSum(int sum);
     void mirror();
     void doubleTree();
-    bool sameTree(BinaryTree* otherTree);
-    int countTrees(int numKeys);
     bool isBST();
     TreeNode* getRoot() { return root; }
     void prettyPrint();
@@ -56,6 +53,7 @@ class BinaryTree
     TreeNode* lookup(TreeNode* node, int value);
     TreeNode* insert(TreeNode* node, int data);
     void deleteNode(TreeNode* node);
+    void deleteAll(TreeNode* node);
     int size(TreeNode* node);
     int maxDepth(TreeNode* node);
     int minValue(TreeNode* node);
@@ -66,10 +64,7 @@ class BinaryTree
     bool hasPathSum(TreeNode* node, int sum);
     void mirror(TreeNode* node);
     void doubleTree(TreeNode* node);
-    bool sameTree(TreeNode* a, TreeNode* b);
-    int countTrees(TreeNode* node, int numKeys);
     bool isBST(TreeNode* node);
-    void printPretty(int level, int indentSpace);
 };
 
 #endif /* defined(__Project10__BinaryTree__) */
