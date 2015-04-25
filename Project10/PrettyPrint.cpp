@@ -13,7 +13,23 @@
 
 using namespace std;
 
-// Convert an integer value to string
+/*
+ Function prototype:
+ string intToString(int);
+ 
+ Function Definition:
+ This function takes an integer as a parameter and type casts it into a string. Returns the string.
+ 
+ Example:
+ int intToString(8);
+ 
+ Precondition:
+ The parameter is an integer
+ 
+ Post Condition:
+ The integer is type casted into a string and returned.
+ */
+
 string intToString(int val)
 {
     ostringstream ss;
@@ -21,19 +37,51 @@ string intToString(int val)
     return ss.str();
 }
 
-// Print the arm branches (eg, /    \ ) on a line
+/*
+ Function Prototype:
+ void printBranches(int, int, int, int, const deque<TreeNode*>);
+ 
+ Function definition:
+ Print the arm branches (eg, /    \ ) on a line using the deque data structure to store the values for the branches, space between the nodes, the start length, and the nodes in the level.
+ 
+ Example:
+ printBranches(branchLen, nodeSpaceLen, startLen, nodesInThisLevel, const deque<TreeNode*>& nodesQueue);
+ 
+ Pre condition:
+ None
+ 
+ Post condition:
+ The branches are printed with the corresponding spaces
+ */
+
 void printBranches(int branchLen, int nodeSpaceLen, int startLen, int nodesInThisLevel, const deque<TreeNode*>& nodesQueue)
 {
     deque<TreeNode*>::const_iterator iter = nodesQueue.begin();
     for (int i = 0; i < nodesInThisLevel / 2; i++)
     {
-        cout << ((i == 0) ? setw(startLen-1) : setw(nodeSpaceLen-2)) << "" << ((*iter++) ? "/" : " ");
-        cout << setw(2*branchLen+2) << "" << ((*iter++) ? "\\" : " ");
+        cout << ((i == 0) ? setw(startLen - 1) : setw(nodeSpaceLen - 2)) << "" << ((*iter++) ? "/" : " ");
+        cout << setw(2 * branchLen + 2) << "" << ((*iter++) ? "\\" : " ");
     }
     cout << endl;
 }
 
-// Print the branches and node (eg, ___10___ )
+/*
+ Function Prototype:
+ void printNodes(int, int, int, int, const deque<TreeNode*>);
+ 
+ Function Definition:
+ Prints branches and the node in the middle. Creates a deque to store the nodes and the spaces accordingly.
+ 
+ Example:
+ printNodes(branchLen, nodeSpaceLen, startLen, nodesInThisLevel, nodesQueue);
+ 
+ Precondition:
+ None
+ 
+ Post Condition:
+ The branches are printed with the corresponding spaces and the node.
+ */
+
 void printNodes(int branchLen, int nodeSpaceLen, int startLen, int nodesInThisLevel, const deque<TreeNode*>& nodesQueue)
 {
     deque<TreeNode*>::const_iterator iter = nodesQueue.begin();
@@ -46,7 +94,23 @@ void printNodes(int branchLen, int nodeSpaceLen, int startLen, int nodesInThisLe
     cout << endl;
 }
 
-// Print the leaves only (just for the bottom row)
+/*
+ Function Prototype:
+ void printLeaves(int, int, int, const deque<TreeNode*>);
+ 
+ Function Definition:
+ Prints the leaves of the tree (the bottom row of the tree) with the corresponding spaces and stores this in a deque to access the values from either end.
+ 
+ Example:
+ printLeaves(indentSpace, level, nodesInThisLevel, nodesQueue);
+ 
+ Precondition:
+ None
+ 
+ Post Condition:
+ The leaves of the tree are printed with the corresponding spaces
+ */
+
 void printLeaves(int indentSpace, int level, int nodesInThisLevel, const deque<TreeNode*>& nodesQueue)
 {
     deque<TreeNode*>::const_iterator iter = nodesQueue.begin();
@@ -57,9 +121,22 @@ void printLeaves(int indentSpace, int level, int nodesInThisLevel, const deque<T
     cout << endl;
 }
 
-// Pretty formatting of a binary tree to the output stream
-// level: Control how wide you want the tree to sparse (eg, level 1 has the minimum space between nodes, while level 2 has a larger space between nodes)
-// indentSpace: Change this to add some indent space to the left (eg, indentSpace of 0 means the lowest level of the left node will stick to the left margin)
+/*
+ Function Prototype:
+ void printPretty(TreeNode*, int, int, int);
+ 
+ Function Description:
+ This function calls the printBranches, printLeaves, and printNodes functions to output the tree. Prints the corresponding tree.
+ 
+ Example:
+ printPretty(root, maxDepth, 1, 0);
+ 
+ Precondition:
+ None
+ 
+ Post Condition:
+ The tree is printed with the leaves, branches, and nodes in the right places starting from the root and going all the way to the maximum depth of the tree.
+ */
 
 void printPretty(TreeNode* root, int height, int level, int indentSpace)
 {
