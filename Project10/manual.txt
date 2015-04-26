@@ -1,0 +1,133 @@
+Once the program’s command line arguments are set and the program is compiled, the first thing you should see is the main menu pictured below. Each option corresponds to a different function menu for the tree, aside from the last three options.
+
+======Main Menu=====
+1. Tree Functions
+2. Tree Information
+3. Tree Operations
+4. Print Tree
+5. Reset Tree
+6. Delete Tree
+7. Quit
+
+When the user selects the first option, another menu should pop up. This allows the user to insert a value into the tree, lookup a value in the tree, and delete a value from the tree
+
+=====Tree Functions=====
+1. Insert a value — this prompts the user for a value and then inserts it into the tree
+2. Lookup a value - this prompts the user for a value, searches the tree, and displays messages if found or not
+3. Delete a value - this prompts the user for a value, searches the tree, and deletes it if found
+4. Main Menu — returns to the main menu
+
+=====Tree Information=====
+1. Tree Size — displays the number of nodes in the tree
+2. Max Depth — displays the height of the tree
+3. Min Value - displays the minimum value in the tree
+4. Max Value - displays the maximum value in the tree
+5. Valid Tree - checks to see if the tree is a valid binary search tree, and displays a message if it is or not
+6. Main Menu - returns to the main menu
+
+=====Tree Operations=====
+1. Double Tree
+2. Mirror Tree
+3. Find Path Sum
+4. Main Menu
+
+In this menu, the user performs functions that alter the structure of the tree. For example, the tree contains values 40, 30, and 20:
+
+  30
+ /  \
+20  40
+
+Once the user selects the first option, the tree is doubled and the output is the new tree:
+
+=====Tree Operations=====
+1. Double Tree
+2. Mirror Tree
+3. Find Path Sum
+4. Main Menu
+
+Doubled Tree: 
+
+        ______30______
+       /              \
+    __30            __40  
+   /               /       
+  20              40        
+ /                           
+20               
+
+If the user selects the option to mirror the tree, the tree new tree is displayed:
+
+=====Tree Operations=====
+1. Double Tree
+2. Mirror Tree
+3. Find Path Sum
+4. Main Menu
+
+Mirrored Tree: 
+
+        ______30______
+       /              \
+      40__            30__
+          \               \
+          40              20
+                            \
+                            20
+
+If the user selects find path sum, the user is prompted for a value and the output displays a message if the sum exists or if there is no root-to-leaf path that sums to the user’s value.
+
+=====Tree Operations=====
+1. Double Tree
+2. Mirror Tree
+3. Find Path Sum
+4. Main Menu
+
+Enter value:
+100
+The answer is yes.
+
+The final option returns to the main menu.
+
+======Main Menu=====
+1. Tree Functions
+2. Tree Information
+3. Tree Operations
+4. Print Tree
+5. Reset Tree
+6. Delete Tree
+7. Quit
+4
+
+=====Print the Tree=====
+1. Postorder Traversal — prints the values in a list according to post-order traversal
+2. Preorder Traversal - prints the values in a list according to pre-order traversal
+3. In Order Traversal - prints the values in order in a list
+4. Pretty Print
+5. Main Menu
+4
+
+The pretty print option formats the existing tree with the appropriate spacing like this:
+
+        ______30______
+       /              \
+    __20__          __40__
+   /      \        /      \
+  11      25      35      45
+ /  \    /  \    /  \    /  \
+10  15  22  27  32  37  42  50
+
+
+The final option again returns to the main menu. 
+
+Upon returning to the main menu, the remaining three options are to reset the tree, delete the tree and quit.
+
+======Main Menu=====
+1. Tree Functions
+2. Tree Information
+3. Tree Operations
+4. Print Tree
+5. Reset Tree — this deletes the existing tree, reloads the tree from the file, and displays the main menu.
+6. Delete Tree - this deletes all nodes in the tree and displays the main menu once finished.
+7. Quit
+
+The final option quits the program and displays the message “Goodbye!”
+
