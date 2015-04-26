@@ -27,7 +27,7 @@ using namespace std;
  The parameter is an integer
  
  Post Condition:
- The integer is type casted into a string and returned.
+ The integer is returned as a string.
  */
 
 string intToString(int val)
@@ -79,7 +79,7 @@ void printBranches(int branchLen, int nodeSpaceLen, int startLen, int nodesInThi
  None
  
  Post Condition:
- The branches are printed with the corresponding spaces and the node.
+ The function prints the nodes in the tree.
  */
 
 void printNodes(int branchLen, int nodeSpaceLen, int startLen, int nodesInThisLevel, const deque<TreeNode*>& nodesQueue)
