@@ -22,7 +22,7 @@ void mainMenu()
     cout << "7. Quit" << endl;
 }
 
-//Functions menu with a switch for each case in the menu
+//Functions menu - Contains all functions that can be performed on the tree
 void functionsMenu(BinaryTree& tree)
 {
     string inputLine;
@@ -69,7 +69,7 @@ void functionsMenu(BinaryTree& tree)
     }
 }
 
-//Information about the tree with a switch that covers each case in the menu
+//Information menu - Contains information about the tree
 void informationMenu(BinaryTree& tree)
 {
     string inputLine;
@@ -115,7 +115,7 @@ void informationMenu(BinaryTree& tree)
     }
 }
 
-//Operations for the tree with a switch for each case in the menu
+//Operations menu - Contains operations you can perform with an existing tree.
 void operationsMenu(BinaryTree& tree)
 {
     string inputLine;
@@ -196,7 +196,7 @@ void printingMenu(BinaryTree& tree)
     }
 }
 
-//Loads the tree and inserts values with the iteration operator
+//Loads the tree data from a file and loads the tree
 void loadFileData(BinaryTree& tree, const char* filename)
 {
     string line;
