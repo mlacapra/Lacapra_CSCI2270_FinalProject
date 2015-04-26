@@ -1,4 +1,6 @@
-Once the program’s command line arguments are set and the program is compiled, the first thing you should see is the main menu pictured below. Each option corresponds to a different function menu for the tree, aside from the last three options.
+This program is a tool to teach computer science students to help them master Binary Trees. It allows them to create trees and manipulate their nodes, allowing them to visualize the tree’s structure every step of the way.
+
+Use Xcode to open the project file and build the executable. Run the program providing as a command line argument the name of a text file that contains a list of values to populate the tree. The nodes are created in the tree in the order in which they appear in the file. Each value is separated by a blank space. When you first run the program, you’ll see the main menu as pictured below. Each of the first four options will display a sub-menu to perform different operations on the tree. The remaining three options allow the user to reset the tree to its initial state, to delete the entire tree, and to quit the program.
 
 ======Main Menu=====
 1. Tree Functions
@@ -118,15 +120,13 @@ The pretty print option formats the existing tree with the appropriate spacing l
 
 The final option again returns to the main menu. 
 
-Upon returning to the main menu, the remaining three options are to reset the tree, delete the tree and quit.
-
 ======Main Menu=====
 1. Tree Functions
 2. Tree Information
 3. Tree Operations
 4. Print Tree
-5. Reset Tree — this deletes the existing tree, reloads the tree from the file, and displays the main menu.
-6. Delete Tree - this deletes all nodes in the tree and displays the main menu once finished.
+5. Reset Tree 
+6. Delete Tree 
 7. Quit
 
 The final option quits the program and displays the message “Goodbye!”
