@@ -8,7 +8,7 @@ How to Run:
 Download the zip file which contains BinaryTree.cpp, BinaryTree.h, PrettyPrint.cpp, PrettyPrint.h, the driver file, and a text file to pass into the program as a command line argument. To run the program, set the scheme to include the text file, and compile. 
 
 Project Documentation:
-//Qui dovrebbe esserci un file che spiega l'implementazione di ogni funzione (da quello che ho capito..)
+
 
 Dependencies:
 None
