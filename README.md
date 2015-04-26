@@ -2,25 +2,26 @@
 Final Project Repository
 
 Project Summary:
-This project is a tool to teach students about the functions of a Binary Tree. The program takes a command line argument and loads a basic tree from a text file. The user then has 7 menu options to choose from. The first option allows the user to insert, lookup, and delete from the tree. The second option allows the user to find information about the tree including the size, the max value, the min value, the max depth, and if the tree is a valid binary tree. The third option allows the user to perform different operations with the existing tree such as mirroring the tree, doubling the tree, and finding a root to leaf path with a sum inputted by the user. The fourth option allows the user to print the values in the tree post order, pre order, in order, or printed in a way to visually see the tree. The fifth option allows the user to reset the tree to the default settings. The sixth allows the user to delete all the values from the tree, and the final option is to quit the program.
+This project is a tool to teach students about Binary Trees. There are 7 options in the main menu that allow the user to explore the various functionalities of a Binary Tree. The first 4 options allow the user to perform operations on the tree, get information about the tree, reformat the tree, and print the tree according to different types of traversals. The remaining three options allow the user to reset the tree to the default settings, delete all information from the tree, and quit the program.
 
 How to Run:
-Download the zip file which contains BinaryTree.cpp, BinaryTree.h, PrettyPrint.cpp, PrettyPrint.h, the driver file, and a text file to pass into the program as a command line argument. To run the program, set the scheme to include the text file, and compile. 
+Open the program with Xcode, compile, and set the command line argument with the included tree.txt file, or any other text file containing integer values formatted in the same way as the example file.
 
 Project Documentation:
+The project documentation is included in the manual.txt file
 
 
 Dependencies:
 None
 
 System Requirements:
-Compatible with Mac, Windows, and Linux
+Mac OS X
 
 Group Members:
 Margherita Lacapra
 
 Contributors:
-1337c0d3r -- prettyPrint function
+N/A
 
 Bugs:
 There are no known bugs in the project.
