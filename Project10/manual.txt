@@ -57,7 +57,7 @@ Doubled Tree:
  /                           
 20               
 
-If the user selects the option to mirror the tree, the tree new tree is displayed:
+If the user selects the option to mirror the tree, the new tree is displayed:
 
 =====Tree Operations=====
 1. Double Tree
